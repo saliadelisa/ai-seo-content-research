@@ -1,20 +1,3 @@
-"""
-fetch_transcripts.py
-Fetches YouTube video transcripts via Supadata API.
-Saves each transcript as a .md file in /research/youtube-transcripts/
-
-Usage:
-    python scripts/fetch_transcripts.py
-
-Requirements:
-    pip install requests python-dotenv
-
-Setup:
-    1. Create a .env file in the project root
-    2. Add your Supadata API key: SUPADATA_API_KEY=your_key_here
-    3. Add video URLs to the VIDEOS list below
-"""
-
 import os
 import re
 import requests
@@ -32,42 +15,44 @@ OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 VIDEOS = [
     {
         "expert": "kevin-indig",
-        "title": "How AI is Changing SEO Strategy",
-        "url": "https://www.youtube.com/watch?v=REPLACE_WITH_REAL_ID"
+        "title": "SEO In The Age of AI Expert Insights from Kevin Indig",
+        "url": "https://www.youtube.com/watch?v=gFqNOCWbF-4"
+    },
+    {
+        "expert": "kevin-indig",
+        "title": "Preparing for Organic Growth in 2025 AirOps and Kevin Indig",
+        "url": "https://www.youtube.com/watch?v=Vt_C1pEfNd8"
     },
     {
         "expert": "aleyda-solis",
-        "title": "AI Prompts for SEO Workflows",
-        "url": "https://www.youtube.com/watch?v=REPLACE_WITH_REAL_ID"
+        "title": "Crawling Mondays AI SEO Prompts and Workflows",
+        "url": "https://www.youtube.com/watch?v=FceqAiMTE5M"
     },
     {
         "expert": "kyle-roof",
-        "title": "Does AI Content Rank on Google",
-        "url": "https://www.youtube.com/watch?v=REPLACE_WITH_REAL_ID"
+        "title": "Does AI Content Actually Rank on Google",
+        "url": "https://www.youtube.com/watch?v=8SGwUFPPBjE"
     },
     {
         "expert": "gael-breton",
-        "title": "AI Content Production at Scale",
-        "url": "https://www.youtube.com/watch?v=REPLACE_WITH_REAL_ID"
+        "title": "AI Content Production at Scale Authority Hacker",
+        "url": "https://www.youtube.com/watch?v=4ZtFkbSaFCo"
     },
     {
         "expert": "wil-reynolds",
-        "title": "How AI Changes SEO Agency Work",
-        "url": "https://www.youtube.com/watch?v=REPLACE_WITH_REAL_ID"
+        "title": "How AI Is Changing SEO Agency Work",
+        "url": "https://www.youtube.com/watch?v=9jXQFhGKMfA"
     },
     {
         "expert": "surfer-seo",
-        "title": "Surfer AI Content Workflow Tutorial",
-        "url": "https://www.youtube.com/watch?v=REPLACE_WITH_REAL_ID"
+        "title": "Surfer AI Full Content Workflow Tutorial",
+        "url": "https://www.youtube.com/watch?v=PdPV5GBxYQo"
     },
 ]
 
 
 def extract_video_id(url):
-    patterns = [
-        r"v=([a-zA-Z0-9_-]{11})",
-        r"youtu\.be/([a-zA-Z0-9_-]{11})",
-    ]
+    patterns = [r"v=([a-zA-Z0-9_-]{11})", r"youtu\.be/([a-zA-Z0-9_-]{11})"]
     for pattern in patterns:
         match = re.search(pattern, url)
         if match:
@@ -96,16 +81,9 @@ def fetch_transcript(video_id):
 def save_transcript(expert, title, video, transcript_data):
     expert_dir = OUTPUT_DIR / expert
     expert_dir.mkdir(parents=True, exist_ok=True)
-
     segments = transcript_data.get("content", [])
-    text = ""
-    if isinstance(segments, list):
-        text = "\n".join(s.get("text", "") for s in segments)
-    elif isinstance(segments, str):
-        text = segments
-
+    text = "\n".join(s.get("text", "") for s in segments) if isinstance(segments, list) else segments
     content = f"# {title}\n\n**Expert**: {expert}\n**URL**: {video['url']}\n**Fetched**: June 2026\n\n---\n\n## Transcript\n\n{text}"
-
     filepath = expert_dir / f"{slugify(title)}.md"
     with open(filepath, "w", encoding="utf-8") as f:
         f.write(content)
@@ -116,7 +94,6 @@ def main():
     if not API_KEY:
         print("SUPADATA_API_KEY not found in .env file")
         return
-
     print(f"Fetching transcripts for {len(VIDEOS)} videos...\n")
     for video in VIDEOS:
         print(f"Processing: {video['expert']} — {video['title']}")
