@@ -19,34 +19,24 @@ VIDEOS = [
         "url": "https://www.youtube.com/watch?v=gFqNOCWbF-4"
     },
     {
-        "expert": "kevin-indig",
-        "title": "Preparing for Organic Growth in 2025 AirOps and Kevin Indig",
-        "url": "https://www.youtube.com/watch?v=Vt_C1pEfNd8"
-    },
-    {
-        "expert": "aleyda-solis",
-        "title": "Crawling Mondays AI SEO Prompts and Workflows",
-        "url": "https://www.youtube.com/watch?v=FceqAiMTE5M"
-    },
-    {
         "expert": "kyle-roof",
-        "title": "Does AI Content Actually Rank on Google",
-        "url": "https://www.youtube.com/watch?v=8SGwUFPPBjE"
+        "title": "Kyle Roof Analysed 10937 Web Pages Why Your Content Is Invisible to Google and AI",
+        "url": "https://www.youtube.com/watch?v=XckN74eux78"
     },
     {
         "expert": "gael-breton",
-        "title": "AI Content Production at Scale Authority Hacker",
-        "url": "https://www.youtube.com/watch?v=4ZtFkbSaFCo"
+        "title": "Automate 10K Per Month in Tasks with AI Real Workflows",
+        "url": "https://www.youtube.com/watch?v=blG6gss-mUY"
     },
     {
-        "expert": "wil-reynolds",
-        "title": "How AI Is Changing SEO Agency Work",
-        "url": "https://www.youtube.com/watch?v=9jXQFhGKMfA"
+        "expert": "gael-breton",
+        "title": "Cutting Through the AI Hype With Gael Breton",
+        "url": "https://www.youtube.com/watch?v=c2fgBO0cpcw"
     },
     {
-        "expert": "surfer-seo",
-        "title": "Surfer AI Full Content Workflow Tutorial",
-        "url": "https://www.youtube.com/watch?v=PdPV5GBxYQo"
+        "expert": "gael-breton",
+        "title": "Gael Breton Authority Hacker SEO Masterclass 2024",
+        "url": "https://www.youtube.com/watch?v=Lt2I-wMGe2Q"
     },
 ]
 
